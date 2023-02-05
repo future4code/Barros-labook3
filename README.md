@@ -31,11 +31,15 @@ Caso queira rodar o projeto localmente, as instruções são:
 ```
 git clone https://github.com/future4code/Barros-labook3.git
 
-npm run install
+cd Barros-labook3 -> para entrar na pasta raiz do projeto
+
+npm install -> para instalar as dependências do projeto
 
 criar um arquivo .env com as informações do seus banco de dados
 
-npm run dev para rodar o servidor
+npm run migrations -> para criar as tabelas no seu banco de dados
+
+npm run dev -> para rodar o servidor
 ```
 
 Instruções para preencher o arquivo dotenv:
