@@ -1,8 +1,8 @@
-import { CustomError } from "./customError";
+import { CustomError } from "./CustomError";
 
-export class IncompleteData extends CustomError {
+export class IncompleteDataUser extends CustomError {
     constructor() {
-        super(422, "Precisa passar: nome, email e password.")
+        super(422, "Precisa informar: nome, email e password.")
     }
 }
 
