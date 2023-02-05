@@ -8,7 +8,7 @@ const postDatabase = new PostDataBase()
 
 export class PostBusiness {
 
-    async createPost (input: postInputDTO) {
+    async createPost (input: postInputDTO):Promise<void> {
         try {
 
             if(!input.photo || !input.description || !input.type || !input.authorId) {
@@ -36,7 +36,7 @@ export class PostBusiness {
         }
     }
 
-    async getPostById(id: string) {
+    async getPostById(id: string):Promise<postInsertDTO> {
         try {
             const postById = postDatabase.getPostById(id)
 

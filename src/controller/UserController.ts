@@ -5,7 +5,7 @@ import { userInputDTO } from "../model/userDTO"
 const userBusiness = new UserBusiness()
 export class UserController { 
 
-     async createUser (req: Request, res: Response) {
+     async createUser (req: Request, res: Response):Promise<void> {
 
         try {
 

@@ -26,3 +26,13 @@ Content-Type: application/json
 // Encontrar um post pelo id
 GET http://localhost:3003/post/posts/208bbd36-f995-4ea5-ac66-41d4c64614ed
 Content-Type: application/json
+
+// Iniciar uma amizade
+###
+POST http://localhost:3003/friendship/post
+Content-Type: application/json
+
+{
+    "userId": "a1e6abf9-d6b7-4491-b7a7-964ec3683f56",
+    "friendId": "ff181eff-2287-45f5-a513-04e855afdf88"
+}

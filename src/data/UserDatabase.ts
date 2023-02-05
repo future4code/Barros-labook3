@@ -3,7 +3,7 @@ import { BaseDatabase } from "./BaseDatabase"
 
 const TABLE_NAME = 'labook_users'
 export class UserDatabase extends BaseDatabase  {
-    async insertUser (input: userInsertDTO) {
+    async insertUser (input: userInsertDTO):Promise<void> {
         try {
             await UserDatabase.connection
             .insert({
@@ -19,5 +19,13 @@ export class UserDatabase extends BaseDatabase  {
         }
     }
 
+    async getUserById (id:string): Promise<userInsertDTO> {
+        const result = await BaseDatabase.connection
+        .select("*")
+        .where({id})
+        .into(TABLE_NAME)
+        
+        return result[0];
+    }
     
 }

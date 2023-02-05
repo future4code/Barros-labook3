@@ -22,7 +22,7 @@ export class PostDataBase extends BaseDatabase  {
         }
     }
 
-    async getPostById (id:string): Promise<any> {
+    async getPostById (id:string): Promise<postInsertDTO> {
         try {
             const result = await PostDataBase.connection
             .select("*")

@@ -17,3 +17,9 @@ export class InvalidPassword extends CustomError {
         super(422, "Senha deve conter no mínimo 6 caracteres.")
     }
 }
+
+export class UserNotFound extends CustomError {
+    constructor() {
+        super(404, "Id de Usuário não encontrado.")
+    }
+}
