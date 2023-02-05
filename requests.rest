@@ -1,0 +1,9 @@
+// Cadastrar um novo usuário
+POST http://localhost:3003/user/users
+Content-Type: application/json
+
+{
+    "name": "Marina Alves",
+    "email": "marinaemail.com",
+    "password": "123456"
+}
