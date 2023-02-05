@@ -19,7 +19,7 @@ export class UserDatabase extends BaseDatabase  {
         }
     }
 
-    async getUserById (id:string): Promise<userInsertDTO> {
+    async selectUserById (id:string): Promise<userInsertDTO> {
         const result = await BaseDatabase.connection
         .select("*")
         .where({id})
@@ -28,4 +28,14 @@ export class UserDatabase extends BaseDatabase  {
         return result[0];
     }
     
-}
+    async selectUsers ():Promise<any> {
+        try {
+           const result = await UserDatabase.connection
+                          .select('*')
+                          .into(TABLE_NAME)
+            return result; 
+        } catch (error:any) {
+            
+        }
+    }
+ }

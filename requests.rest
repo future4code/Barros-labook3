@@ -1,3 +1,9 @@
+// Retorna todos os usuários
+GET http://localhost:3003/user/users
+Content-Type: application/json
+
+###
+
 // Cadastrar um novo usuário
 POST http://localhost:3003/user/users
 Content-Type: application/json

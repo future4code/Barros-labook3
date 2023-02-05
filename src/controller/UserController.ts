@@ -26,4 +26,13 @@ export class UserController {
            res.status(error.statusCode || 400).send(error.message)
         }
      }
+
+     async getAllUsers (req: Request, res: Response) {
+         try {
+            const users = await userBusiness.getUsers()
+            res.status(200).send(users)
+         } catch (error:any) {
+            
+         }
+     }
 }

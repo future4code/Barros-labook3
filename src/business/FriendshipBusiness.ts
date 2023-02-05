@@ -16,8 +16,8 @@ export class FriendshipBusiness {
             }
 
             const userDatabase = new UserDatabase()
-            const searchUser = await userDatabase.getUserById(input.userId)
-            const searchFriend = await userDatabase.getUserById(input.friendId)
+            const searchUser = await userDatabase.selectUserById(input.userId)
+            const searchFriend = await userDatabase.selectUserById(input.friendId)
 
             if(!searchUser) {
                 throw new UserNotFound()
