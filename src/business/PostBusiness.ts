@@ -1,6 +1,6 @@
 import { PostDataBase } from "../data/PostDatabase";
 import { CustomError } from "../error/CustomError";
-import { IncompleteDataPost, InvalidTypePost } from "../error/PostErrors";
+import { IncompleteDataPost, InvalidTypePost, PostNotFound } from "../error/PostErrors";
 import { postInputDTO, postInsertDTO, POST_TYPES } from "../model/postDTO";
 import { IdGenerator } from "../services/IdGenerator";
 
@@ -31,6 +31,21 @@ export class PostBusiness {
 
             await postDatabase.insertPost(postData)
 
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
+
+    async getPostById(id: string) {
+        try {
+            const postById = postDatabase.getPostById(id)
+
+            if(!postById) {
+                throw new PostNotFound()
+            }
+
+            return postById;
+            
         } catch (error:any) {
             throw new CustomError(error.statusCode, error.message)
         }

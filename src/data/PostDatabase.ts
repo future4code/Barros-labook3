@@ -5,7 +5,7 @@ const TABLE_NAME = "labook_posts"
 
 export class PostDataBase extends BaseDatabase  {
 
-    async insertPost (postData: postInsertDTO) {
+    async insertPost (postData: postInsertDTO): Promise<void> {
         try {
             await PostDataBase.connection
             .insert({
@@ -22,5 +22,18 @@ export class PostDataBase extends BaseDatabase  {
         }
     }
 
+    async getPostById (id:string): Promise<any> {
+        try {
+            const result = await PostDataBase.connection
+            .select("*")
+            .where({ id })
+            .into(TABLE_NAME)
+            
+            return result[0];
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
     
 }
