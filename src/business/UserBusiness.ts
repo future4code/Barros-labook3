@@ -6,7 +6,7 @@ import {IdGenerator} from "../services/IdGenerator"
 
 const userDatabase = new UserDatabase()
 export class UserBusiness {
-    async createUser (input: userInputDTO ) {
+    async createUser (input: userInputDTO ):Promise<void> {
         try {
             if (!input.name || !input.email || !input.password) {
                 throw new IncompleteDataUser()
