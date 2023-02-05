@@ -34,4 +34,12 @@ export class UserBusiness {
         }
     }
 
+    async getUsers ():Promise<any> {
+        try {
+            const users = await userDatabase.selectUsers()
+            return users;
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
 }
