@@ -15,9 +15,9 @@ POST http://localhost:3003/post/post
 Content-Type: application/json
 
 {
-    "photo": "https://m.media-amazon.com/images/I/81Vzqa31fxL.jpg",
-    "description": "Melhor livro do melhor poeta!",
-    "authorId": "daf0ce5f-c708-421b-b824-057916f8a0c8",
+    "photo": "https://img.freepik.com/fotos-premium/banda-de-rock-fazendo-show-em-casa-ao-vivo-na-europa_53876-135229.jpg",
+    "description": "Curtindo um som ao vivo...",
+    "authorId": "74a6df37-ac27-46d7-993a-683cee81db48",
     "type": "normal"
 }
 
@@ -33,6 +33,29 @@ POST http://localhost:3003/friendship/post
 Content-Type: application/json
 
 {
-    "userId": "a1e6abf9-d6b7-4491-b7a7-964ec3683f56",
-    "friendId": "ff181eff-2287-45f5-a513-04e855afdf88"
+    "userId": "ff181eff-2287-45f5-a513-04e855afdf88",
+    "friendId": "74a6df37-ac27-46d7-993a-683cee81db48"
 }
+
+###
+
+// Desfazer uma amizade
+PUT http://localhost:3003/friendship/unfriend
+Content-Type: application/json
+
+{
+    "userId": "ff181eff-2287-45f5-a513-04e855afdf88",
+    "friendId": "74a6df37-ac27-46d7-993a-683cee81db48"
+}
+
+###
+
+// Retornar todos os posts
+GET http://localhost:3003/post/posts
+Content-Type: application/json
+
+###
+
+// Retorna o feed de um usuário com os posts de seus amigos
+GET http://localhost:3003/post/feed/ff181eff-2287-45f5-a513-04e855afdf88
+Content-Type: application/json

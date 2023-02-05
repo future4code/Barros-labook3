@@ -1,7 +1,7 @@
 import { FriendshipDatabase } from "../data/FriendshipDatabase";
 import { UserDatabase } from "../data/UserDatabase";
 import { CustomError } from "../error/CustomError";
-import { FriendNotFound, FriendshipIncompleteData } from "../error/FriendshipErrors";
+import { FriendNotFound, FriendshipIncompleteData, FriendshipNotFound } from "../error/FriendshipErrors";
 import { UserNotFound } from "../error/UserErrors";
 import { friendInsertDTO, friendshipInputDTO } from "../model/friendshipDTO";
 import { IdGenerator } from "../services/IdGenerator";
@@ -37,7 +37,26 @@ export class FriendshipBusiness {
             friendshipDataBase.insertFriendship(friendshipData);
 
         } catch (error:any) {
-          throw new CustomError(error.statusCode, error.message)
+          throw new CustomError(error.statusCode, error.message);
+        }
+    }
+
+    async unfriend (input: friendshipInputDTO):Promise<void> {
+        try {
+
+            if(!input.userId || !input.friendId) {
+                throw new FriendshipIncompleteData()
+            }
+
+            const friendshipId = await friendshipDataBase.selectFriendshipById(input)
+
+            if (!friendshipId) {
+                throw new FriendshipNotFound();
+            }
+
+            friendshipDataBase.deleteFriendship(friendshipId.id)
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message);
         }
     }
 }

@@ -11,3 +11,9 @@ export class FriendshipIncompleteData extends CustomError {
         super(422, "Deve informar o id do usuário (userId) e o id do amigo a ser adicionado (friendId)")
     }
 }
+
+export class FriendshipNotFound extends CustomError {
+    constructor() {
+        super(404, "Amizade não encontrada. Revise os parâmetros passados.")
+    }
+}

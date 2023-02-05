@@ -13,4 +13,14 @@ export class FriendShipController {
            res.status(error.statusCode || 400).send(error.message)
         }
     }
+
+    async unfriend (req: Request, res: Response) {
+        try {
+            const {userId, friendId} = req.body
+            await friendshipBusiness.unfriend({userId, friendId})
+            res.status(201).send("Amizade desfeita com sucesso!")
+        } catch (error:any) {
+            res.status(error.statusCode || 400).send(error.message)
+        }
+    }
 }

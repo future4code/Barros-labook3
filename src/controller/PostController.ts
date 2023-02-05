@@ -34,4 +34,23 @@ export class PostController {
          res.status(error.statusCode || 400).send(error.message)
       }
      }
+
+     async getPosts (req: Request, res: Response): Promise<void> {
+      try {
+         const feed = await postBusiness.getPosts()
+         res.status(200).send(feed)
+      } catch (error:any) {
+         res.status(error.statusCode || 400).send(error.message)
+      }
+     }
+
+     async getFeed (req: Request, res: Response) {
+      try {
+         const userId = req.params.id as string
+         const feed = await postBusiness.getFeed(userId)
+         res.status(200).send(feed)
+      } catch (error:any) {
+         res.status(error.statusCode || 400).send(error.message)
+      }
+     }
 }
