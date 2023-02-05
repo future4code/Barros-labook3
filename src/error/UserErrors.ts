@@ -1,8 +1,8 @@
-import { CustomError } from "./customError";
+import { CustomError } from "./CustomError";
 
-export class IncompleteData extends CustomError {
+export class IncompleteDataUser extends CustomError {
     constructor() {
-        super(422, "Precisa passar: nome, email e password.")
+        super(422, "Precisa informar: nome, email e password.")
     }
 }
 
@@ -15,5 +15,11 @@ export class InvalidEmail extends CustomError {
 export class InvalidPassword extends CustomError {
     constructor() {
         super(422, "Senha deve conter no mínimo 6 caracteres.")
+    }
+}
+
+export class UserNotFound extends CustomError {
+    constructor() {
+        super(404, "Id de Usuário não encontrado.")
     }
 }

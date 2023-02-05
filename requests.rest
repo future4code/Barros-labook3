@@ -1,3 +1,9 @@
+// Retorna todos os usuários
+GET http://localhost:3003/user/users
+Content-Type: application/json
+
+###
+
 // Cadastrar um novo usuário
 POST http://localhost:3003/user/users
 Content-Type: application/json
@@ -7,3 +13,55 @@ Content-Type: application/json
     "email": "adriano@email.com",
     "password": "123456"
 }
+
+###
+
+// Criar um novo post
+POST http://localhost:3003/post/post
+Content-Type: application/json
+
+{
+    "photo": "https://img.freepik.com/fotos-premium/banda-de-rock-fazendo-show-em-casa-ao-vivo-na-europa_53876-135229.jpg",
+    "description": "Curtindo um som ao vivo...",
+    "authorId": "74a6df37-ac27-46d7-993a-683cee81db48",
+    "type": "normal"
+}
+
+###
+
+// Encontrar um post pelo id
+GET http://localhost:3003/post/posts/208bbd36-f995-4ea5-ac66-41d4c64614ed
+Content-Type: application/json
+
+// Iniciar uma amizade
+###
+POST http://localhost:3003/friendship/post
+Content-Type: application/json
+
+{
+    "userId": "ff181eff-2287-45f5-a513-04e855afdf88",
+    "friendId": "74a6df37-ac27-46d7-993a-683cee81db48"
+}
+
+###
+
+// Desfazer uma amizade
+PUT http://localhost:3003/friendship/unfriend
+Content-Type: application/json
+
+{
+    "userId": "ff181eff-2287-45f5-a513-04e855afdf88",
+    "friendId": "74a6df37-ac27-46d7-993a-683cee81db48"
+}
+
+###
+
+// Retornar todos os posts
+GET http://localhost:3003/post/posts
+Content-Type: application/json
+
+###
+
+// Retorna o feed de um usuário com os posts de seus amigos
+GET http://localhost:3003/post/feed/ff181eff-2287-45f5-a513-04e855afdf88
+Content-Type: application/json
