@@ -56,7 +56,8 @@ export class PostDataBase extends BaseDatabase  {
                                 FROM labook_posts
                                 JOIN labook_friendship
                                 ON labook_posts.author_id = labook_friendship.id_friend
-                                WHERE(labook_friendship.id_user = '${id}');
+                                WHERE(labook_friendship.id_user = '${id}')
+                                ORDER BY created_at ASC;"
                             `)
     
             return result[0]
