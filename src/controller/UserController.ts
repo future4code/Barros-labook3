@@ -1,8 +1,8 @@
-import express, { Request, Response } from "express"
+import { Request, Response } from "express"
 import { UserBusiness } from "../business/UserBusiness"
 import { userInputDTO } from "../model/userDTO"
 
-
+const userBusiness = new UserBusiness()
 export class UserController { 
 
      async createUser (req: Request, res: Response) {
@@ -10,15 +10,14 @@ export class UserController {
         try {
 
            const { name, email } = req.body
-           const password = req.body.password.toString()
+           const password = (req.body.password).toString()
 
            const input: userInputDTO = {
             name,
             email,
             password
            }
-     
-           const userBusiness = new UserBusiness()
+
            await userBusiness.createUser(input)
      
            res.status(201).send({ message: "Usuário cadastrado com sucesso!" })
@@ -26,13 +25,5 @@ export class UserController {
         } catch (error:any) {
            res.status(error.statusCode || 400).send(error.message)
         }
-     }
-
-     async createPost (req: Request, res: Response) {
-      try {
-         
-      } catch (error:any) {
-         
-      }
      }
 }

@@ -1,9 +1,9 @@
 import {app} from './app';
 import { userRouter } from './routes/userRoute';
+import { postRouter } from './routes/postRoute';
 
 app.use("/user", userRouter)
-
-
+app.use("/post", postRouter)
 
 
 
@@ -24,7 +24,7 @@ app.use("/user", userRouter)
 //    try {
 //       let message = "Success!"
 
-//       const { photo, description, type, authorId } = req.body
+//       
 
 //       const postId: string = Date.now().toString()
 

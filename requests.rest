@@ -7,3 +7,16 @@ Content-Type: application/json
     "email": "adriano@email.com",
     "password": "123456"
 }
+
+###
+
+// Criar um novo post
+POST http://localhost:3003/post/post
+Content-Type: application/json
+
+{
+    "photo": "https://m.media-amazon.com/images/I/81Vzqa31fxL.jpg",
+    "description": "Melhor livro do melhor poeta!",
+    "authorId": "daf0ce5f-c708-421b-b824-057916f8a0c8",
+    "type": "normal"
+}

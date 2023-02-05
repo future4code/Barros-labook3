@@ -1,6 +1,7 @@
 import { userInputDTO, userInsertDTO } from "../model/userDTO"
 import { BaseDatabase } from "./BaseDatabase"
 
+const TABLE_NAME = 'labook_users'
 export class UserDatabase extends BaseDatabase  {
     async insertUser (input: userInsertDTO) {
         try {
@@ -11,7 +12,7 @@ export class UserDatabase extends BaseDatabase  {
                 email: input.email,
                 password: input.password
              })
-             .into('labook_users')
+             .into(TABLE_NAME)
             
         } catch (error:any) {
             throw new Error(error.sqlMessage || error.message);

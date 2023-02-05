@@ -1,16 +1,15 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError } from "../error/customError";
-import { IncompleteData, InvalidEmail, InvalidPassword } from "../error/UserErrors";
+import { CustomError } from "../error/CustomError";
+import { IncompleteDataUser, InvalidEmail, InvalidPassword } from "../error/UserErrors";
 import { userInputDTO, userInsertDTO } from "../model/userDTO";
 import {IdGenerator} from "../services/IdGenerator"
 
+const userDatabase = new UserDatabase()
 export class UserBusiness {
     async createUser (input: userInputDTO ) {
         try {
-            let statusCode = 400
-            let message
             if (!input.name || !input.email || !input.password) {
-                throw new IncompleteData()
+                throw new IncompleteDataUser()
              }
   
              if(!input.email.includes("@")) {
@@ -28,11 +27,11 @@ export class UserBusiness {
                 email: input.email,
                 password: input.password
             }
-            const userDatabase = new UserDatabase()
             await userDatabase.insertUser(userData)
 
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
     }
+
 }
