@@ -6,3 +6,4 @@ export const postRouter = express.Router();
 const postController = new PostController();
 
 postRouter.post('/post', postController.createPost)
+postRouter.get('/posts/:id', postController.getPostById)

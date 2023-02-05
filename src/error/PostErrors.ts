@@ -11,3 +11,9 @@ export class InvalidTypePost extends CustomError {
         super(422, "Tipo de post deve ser: normal ou event")
     }
 }
+
+export class PostNotFound extends CustomError {
+    constructor() {
+        super(404, "Post não encontrado.")
+    }
+}
