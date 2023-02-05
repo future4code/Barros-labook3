@@ -1,10 +1,12 @@
+import { FriendshipDatabase } from "../data/FriendshipDatabase";
 import { PostDataBase } from "../data/PostDatabase";
 import { CustomError } from "../error/CustomError";
-import { IncompleteDataPost, InvalidTypePost, PostNotFound } from "../error/PostErrors";
+import { EmptyFeed, IncompleteDataPost, InvalidTypePost, PostNotFound } from "../error/PostErrors";
 import { postInputDTO, postInsertDTO, POST_TYPES } from "../model/postDTO";
 import { IdGenerator } from "../services/IdGenerator";
 
 const postDatabase = new PostDataBase()
+const friendshipDatabase = new FriendshipDatabase();
 
 export class PostBusiness {
 
@@ -50,4 +52,25 @@ export class PostBusiness {
             throw new CustomError(error.statusCode, error.message)
         }
     }
-}
+
+    async getPosts (): Promise<postInsertDTO[]> {
+        try {
+            const feed = await postDatabase.selectAllPosts()
+            return feed;
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
+
+    async getFeed (id:string): Promise<any> {
+        try {
+            const feed = await postDatabase.selectPostsFeed(id)
+            if(feed.length === 0) {
+                throw new EmptyFeed()
+            }
+            return feed;
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
+ }

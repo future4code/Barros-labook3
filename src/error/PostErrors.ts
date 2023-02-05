@@ -17,3 +17,9 @@ export class PostNotFound extends CustomError {
         super(404, "Post não encontrado.")
     }
 }
+
+export class EmptyFeed extends CustomError {
+    constructor() {
+        super(404, "Sem conteúdo para exibir. Faça novos amigos para ver postagens.")
+    }
+}

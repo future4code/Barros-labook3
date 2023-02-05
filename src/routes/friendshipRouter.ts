@@ -6,3 +6,4 @@ export const friendshipRouter = express.Router();
 const friendshipController = new FriendShipController();
 
 friendshipRouter.post('/post', friendshipController.postFriendship)
+friendshipRouter.put('/unfriend', friendshipController.unfriend)
