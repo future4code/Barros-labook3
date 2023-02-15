@@ -31,7 +31,7 @@ export class UserDatabase extends BaseDatabase  {
     async selectUsers ():Promise<any> {
         try {
            const result = await UserDatabase.connection
-                          .select('*')
+                          .select('id', 'name')
                           .into(TABLE_NAME)
             return result; 
         } catch (error:any) {
